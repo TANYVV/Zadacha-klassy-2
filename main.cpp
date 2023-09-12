@@ -7,6 +7,11 @@ class Numbers
   double m_c;
   
 public:
+  Numbers(double a, double b, double c)
+    : m_a{a}
+    , m_b{b}
+    , m_c{c}
+  {}
   void setValues(double a, double b, double c)
   {
     m_a = a;
@@ -19,9 +24,8 @@ public:
     std::cout<<"<"<<m_a<<" ,"<<m_b<<" ,"<<m_c<<">";
   }
 
-  bool isEqual(const Numbers& obj)
+  bool operator==(const Numbers& obj)
   {
-    //bool isEqual = false;
     if (this == &obj) return true;
 
     return ((m_a == obj.m_a) && (m_b == obj.m_b) && (m_c == obj.m_c));
@@ -30,13 +34,11 @@ public:
 
 int main()
 {
-  Numbers point1;
-  point1.setValues(3.0, 4.0, 5.0);
+  Numbers point1(3.0, 4.0, 5.0);
   
-  Numbers point2;
-  point2.setValues(3.0, 4.0, 5.0);
+  Numbers point2(3.0, 4.0, 5.0);
   
-  if(point1.isEqual(point2))
+  if(point1 == point2)
   {
    std::cout<<"point1 and point2 are equal\n";
   }
@@ -57,6 +59,5 @@ int main()
     std::cout<<"point1 and point3 are not equal\n";
   }
 
-  return 0;std::cout<<"point1 and point3 are equal\n";
-
+  return 0;
 }
