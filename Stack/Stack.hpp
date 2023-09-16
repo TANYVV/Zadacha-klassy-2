@@ -1,24 +1,21 @@
 #pragma once
 
 #include <memory>
+#include <variant>
 
 class Stack
 {
   class Node
   {
+  public:
+    Node(int value, std::shared_ptr<Node> next = nullptr);
+
     int m_value;
-    std::unique_ptr<Node> next;
-
-   public:
-   
-    Node(int value, std::unique_ptr<Node> next = nullptr);
-    
-    int getValue();
-
-    void setValue(int value);
+    std::shared_ptr<Node> m_next;
   };
   
-  std::unique_ptr<Node> m_node;
+  std::shared_ptr<Node> m_node;
+  size_t m_size;
 
   public:
 
@@ -26,7 +23,7 @@ class Stack
 
   void push(int value);
 
-  int pop();
+  std::variant<int> pop();
 
   friend std::ostream& operator<<(std::ostream& out, Stack& obj);
 

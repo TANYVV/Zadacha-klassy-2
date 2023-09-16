@@ -1,4 +1,4 @@
-project(Numbers)
+project(Stack)
 
 file(GLOB_RECURSE SRC "${PROJECT_SOURCE_DIR}/*.cpp" "${PROJECT_SOURCE_DIR}/*.hpp")
 
